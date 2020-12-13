@@ -1,0 +1,11 @@
+{
+  "firstname" : "{{firstname}}",
+  "lastname" : "{{lastname}}",
+  "totalprice" : 567,
+  "depositpaid" : true,
+  "bookingdates" : {
+    "checkin" : "2020-01-01",
+    "checkout" : "2020-02-01"
+  },
+  "additionalneeds" : "{{additionalneeds}}"
+}

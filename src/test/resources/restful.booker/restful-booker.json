@@ -1,0 +1,11 @@
+{
+  "firstname" : "Michael",
+  "lastname" : "Jackson",
+  "totalprice" : 456,
+  "depositpaid" : true,
+  "bookingdates" : {
+    "checkin" : "2020-01-01",
+    "checkout" : "2020-02-01"
+  },
+  "additionalneeds" : "Nothing"
+}
