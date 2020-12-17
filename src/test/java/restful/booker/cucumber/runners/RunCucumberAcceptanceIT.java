@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber.json",
                 "rerun:target/rerun.txt"},
         features = "src/main/resources/features/restful-booker-post.feature",
-        glue = "restful/booker/cucumber/step/definitions"
+        glue = "restful/booker/cucumber/step/definitions",
+        tags = "@testAll"
 )
 public class RunCucumberAcceptanceIT {
 }

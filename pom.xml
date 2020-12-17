@@ -185,6 +185,12 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <includes>
+<!--                        <include>**/RunCucumberAcceptanceIT*.java</include>-->
+                        <include>**/RestfulBookerApiTest*.java</include>
+                    </includes>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>net.masterthought</groupId>

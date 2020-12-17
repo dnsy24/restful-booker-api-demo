@@ -13,10 +13,7 @@ import restful.booker.utilities.testdata.TestDataImpl;
 import restful.booker.utilities.testdata.td.TestData;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
@@ -38,7 +35,7 @@ public class RestfulBookerApiTest extends RestfulBookerApiBaseTest {
                         .body(restfulBookerCredentials)
                         .when()
                         .post();
-        System.out.println(response.getStatusCode());
+        log.info(">>> Status code in getToken method: " + response.getStatusCode());
         return response.jsonPath().get("token").toString();
     }
 
@@ -49,7 +46,6 @@ public class RestfulBookerApiTest extends RestfulBookerApiBaseTest {
         response = get("/booking");
         List<RestfulBookerIdResponse> list = response.jsonPath().getList("", RestfulBookerIdResponse.class);
         log.info(">>> First Booking ID: " + list.get(0).getBookingid());
-//        System.out.println(">>> First Booking ID: " + list.get(0).getBookingid());
     }
 
 
@@ -63,8 +59,7 @@ public class RestfulBookerApiTest extends RestfulBookerApiBaseTest {
                         .get()
                         .prettyPeek();
         assertThat(response.getStatusCode(), is(200));
-        log.info("booking id: " + response.jsonPath().getString("bookingid"));
-//        System.out.println("booking id: " + response.jsonPath().getString("bookingid"));
+        log.info(">>> booking id: " + response.jsonPath().getString("bookingid"));
     }
 
 
@@ -82,10 +77,10 @@ public class RestfulBookerApiTest extends RestfulBookerApiBaseTest {
 
         Map<String, String> responseMap = response.jsonPath().getMap("");
 //        System.out.println("response map: " + responseMap);
-        log.info("response map: " + responseMap);
+        log.info(">>> Response map: " + responseMap);
 
-        System.out.println("firstname in map: " + responseMap.get("firstname"));
-        System.out.println("firstname: " + response.jsonPath().getString("firstname"));
+//        System.out.println("firstname in map: " + responseMap.get("firstname"));
+//        System.out.println("firstname: " + response.jsonPath().getString("firstname"));
 
         RestfulBookerBookingResponse bookingResponse = response.as(RestfulBookerBookingResponse.class);
         System.out.println("Booking Response: " + bookingResponse);
@@ -113,7 +108,7 @@ public class RestfulBookerApiTest extends RestfulBookerApiBaseTest {
 
         Map<String, String> resultMap = response.jsonPath().getMap("");
 //        System.out.println(resultMap);
-        log.info("Result map: " + resultMap);
+        log.info(">>> Result map: " + resultMap);
     }
 
     @DisplayName("Create Booking With JTwig Template")
@@ -186,9 +181,6 @@ public class RestfulBookerApiTest extends RestfulBookerApiBaseTest {
         response =
                 given()
                         .basePath("/booking")
-//                        .auth()
-//                        .preemptive()
-//                        .basic("YWRtaW46cGFzc3dvcmQxMjM=", token)
                         .cookie("token", token)
                         .pathParam("id", bookingId)
                         .body(updatedBooking)

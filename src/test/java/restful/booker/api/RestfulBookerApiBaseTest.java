@@ -14,7 +14,7 @@ import restful.booker.utilities.config.ConfigurationReader;
 import static io.restassured.RestAssured.reset;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class RestfulBookerApiBaseTest {
+public abstract class RestfulBookerApiBaseTest {
 
     protected RequestSpecification requestSpec;
     protected Response response;

@@ -1,4 +1,13 @@
-####Using fetch() API in devtools for endpoint validation
+### How to run tests from command line
+####(check for correct maven surefire plugin configuration first)
+
+With cucumber approach:
+ - mvn clean test -Dcucumber.filter.tags="@testAll"
+
+With script approach:
+ - mvn clean test
+
+####Using fetch() API in dev tools for endpoint validation
  - getting response status code
 
 `fetch('https://restful-booker.herokuapp.com/booking').then(response => response.status).then(status => console.log(status))`
